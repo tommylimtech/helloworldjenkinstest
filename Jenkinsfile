@@ -5,7 +5,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building...'
-        echo "hello world, apache" > helloworld
+        sh 'echo "hello world, apache" > helloworld'
       }
     }
     stage('Deploy') {
