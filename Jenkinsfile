@@ -21,9 +21,9 @@ pipeline {
       steps {
         echo 'Deploying...'
         // The '-o "StrictHostKeyChecking no"' option below is a security risk and should not be used outside of testing.
-        sh 'scp -o "StrictHostKeyChecking no" -i ${params.SSH_KEY} "$WORKSPACE/helloworld" tlsre@${params.TARGET_SERVER}:/var/www/html/'
+        sh "scp -o \"StrictHostKeyChecking no\" -i ${params.SSH_KEY} \"$WORKSPACE/helloworld\" tlsre@${params.TARGET_SERVER}:/var/www/html/"
         // Above line copies helloworld created dynamically in previous stage. Below line copies index.html file from repo pull in previous stage.
-        sh 'scp -o "StrictHostKeyChecking no" -i ${params.SSH_KEY} "$WORKSPACE/index.html" tlsre@${params.TARGET_SERVER}:/var/www/html/'
+        sh "scp -o \"StrictHostKeyChecking no\" -i ${params.SSH_KEY} \"$WORKSPACE/index.html\" tlsre@${params.TARGET_SERVER}:/var/www/html/"
       }
     }
   }
