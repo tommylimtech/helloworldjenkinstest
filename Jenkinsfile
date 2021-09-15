@@ -12,9 +12,9 @@ pipeline {
       steps {
         echo 'Building...'
         // Create helloworld dynamically here
-        sh 'echo "hello world, ${TARGET_BRANCH}" > helloworld'
+        sh 'echo "hello world, ${params.TARGET_BRANCH}" > helloworld'
         // Pull repo
-        git branch: '"${TARGET_BRANCH}"', credentialsId: 'fecde9db-7541-4d34-a7e2-fdfa2b6c1411', url: 'git@github.com:tommylimtech/helloworldjenkinstest.git'
+        git branch: '"${params.TARGET_BRANCH}"', credentialsId: 'fecde9db-7541-4d34-a7e2-fdfa2b6c1411', url: 'git@github.com:tommylimtech/helloworldjenkinstest.git'
       }
     }
     stage('Deploy') {
