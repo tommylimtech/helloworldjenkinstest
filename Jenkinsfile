@@ -13,14 +13,14 @@ pipeline {
       steps {
         echo 'Building...'
         // Create helloworld dynamically here
-        sh "echo \"hello world, ${params.TARGET_BRANCH}\" > helloworld"
+        sh "echo \"breaking changes to test rollback. hello world, ${params.TARGET_BRANCH}\" > helloworld"
         // Pull repo
         git branch: "${params.TARGET_BRANCH}", credentialsId: 'fecde9db-7541-4d34-a7e2-fdfa2b6c1411', url: 'git@github.com:tommylimtech/helloworldjenkinstest.git'
       }
     }
     stage('Deploy') {
       steps {
-        echo 'Deploying...'
+        eco 'Deploying...'
         // The '-o "StrictHostKeyChecking no"' option below is a security risk and should not be used outside of testing.
         sh "scp -o \"StrictHostKeyChecking no\" -i ${params.SSH_KEY} \"$WORKSPACE/helloworld\" tlsre@${params.TARGET_SERVER}:/var/www/html/"
         // Above line copies helloworld created dynamically in previous stage. Below line copies index.html file from repo pull in previous stage.
