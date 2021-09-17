@@ -37,7 +37,7 @@ pipeline {
           sh "curl -s http://${params.TARGET_DEV_SERVER}"
         }
         catch (e) {
-          echo 'Site didn't load properly, skip prod deploy'
+          echo 'Site didn\'t load properly, skip prod deploy'
           throw
         }
       }
@@ -57,7 +57,7 @@ pipeline {
           sh "curl -s http://${params.TARGET_PD1_SERVER}"
         }
         catch (e) {
-          echo 'Site didn't load properly for prod box1, skip prod box2'
+          echo 'Site didn\'t load properly for prod box1, skip prod box2'
           throw
         }
         */
@@ -75,7 +75,7 @@ pipeline {
           sh "curl -s http://${params.TARGET_PD2_SERVER}"
         }
         catch (e) {
-          echo 'Site didn't load properly for prod box2, need to rollback'
+          echo 'Site didn\'t load properly for prod box2, need to rollback'
           throw
         }
         */
