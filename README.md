@@ -1,2 +1,2 @@
 # helloworldjenkinstest
-Testing Jenkins to deploy to ec2 to update web app
+Please see the *apache* branch for more info
