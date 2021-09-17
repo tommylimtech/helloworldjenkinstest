@@ -38,7 +38,7 @@ pipeline {
         }
         catch (e) {
           echo 'Site didn\'t load properly, skip prod deploy'
-          throw
+          throw e
         }
       }
     }
@@ -58,7 +58,7 @@ pipeline {
         }
         catch (e) {
           echo 'Site didn\'t load properly for prod box1, skip prod box2'
-          throw
+          throw e
         }
         */
 
@@ -76,7 +76,7 @@ pipeline {
         }
         catch (e) {
           echo 'Site didn\'t load properly for prod box2, need to rollback'
-          throw
+          throw e
         }
         */
       }
