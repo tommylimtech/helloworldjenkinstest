@@ -33,12 +33,14 @@ pipeline {
         // Put image in images directory
         //sh "scp -o \"StrictHostKeyChecking no\" -i ${params.SSH_KEY} \"$WORKSPACE/images/image.jpg\" tlsre@${params.TARGET_DEV_SERVER}:/var/www/html/images/"
         // Test to see if deploy is working as expected
-        try {
-          sh "curl -s http://${params.TARGET_DEV_SERVER}"
-        }
-        catch (e) {
-          echo 'Site didn\'t load properly, skip prod deploy'
-          throw e
+        script {
+          try {
+            sh "curl -s http://${params.TARGET_DEV_SERVER}"
+          }
+          catch (e) {
+            echo 'Site didn\'t load properly, skip prod deploy'
+            throw e
+          }
         }
       }
     }
@@ -53,12 +55,14 @@ pipeline {
         // Put image in images directory
         //sh "scp -o \"StrictHostKeyChecking no\" -i ${params.SSH_KEY} \"$WORKSPACE/image.jpg\" tlsre@${params.TARGET_PD1_SERVER}:/var/www/html/images/"
         // Test to see if deploy is working as expected
-        try {
-          sh "curl -s http://${params.TARGET_PD1_SERVER}"
-        }
-        catch (e) {
-          echo 'Site didn\'t load properly for prod box1, skip prod box2'
-          throw e
+        script {
+          try {
+            sh "curl -s http://${params.TARGET_PD1_SERVER}"
+          }
+          catch (e) {
+            echo 'Site didn\'t load properly for prod box1, skip prod box2'
+            throw e
+          }
         }
         */
 
@@ -71,12 +75,14 @@ pipeline {
         // Put image in images directory
         //sh "scp -o \"StrictHostKeyChecking no\" -i ${params.SSH_KEY} \"$WORKSPACE/image.jpg\" tlsre@${params.TARGET_PD2_SERVER}:/var/www/html/images/"
         // Test to see if deploy is working as expected
-        try {
-          sh "curl -s http://${params.TARGET_PD2_SERVER}"
-        }
-        catch (e) {
-          echo 'Site didn\'t load properly for prod box2, need to rollback'
-          throw e
+        script {
+          try {
+            sh "curl -s http://${params.TARGET_PD2_SERVER}"
+          }
+          catch (e) {
+            echo 'Site didn\'t load properly for prod box2, need to rollback'
+            throw e
+          }
         }
         */
       }
